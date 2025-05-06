@@ -1,50 +1,19 @@
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "@/providers/ThemeProvider";
 
-interface NavbarProps {
-  language: 'en' | 'fa';
-  setLanguage: (lang: 'en' | 'fa') => void;
-}
-
-export default function Navbar({ language, setLanguage }: NavbarProps) {
+export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
-  const toggleLanguage = () => {
-    const newLanguage = language === 'en' ? 'fa' : 'en';
-    setLanguage(newLanguage);
-    
-    // Navigate to the corresponding language route
-    const currentPath = window.location.pathname;
-    if (language === 'en') {
-      // Converting to FA
-      if (currentPath === '/') {
-        navigate('/fa');
-      } else {
-        navigate('/fa' + currentPath);
-      }
-    } else {
-      // Converting to EN
-      navigate(currentPath.replace('/fa', ''));
-    }
-  };
-
-  const navigation = language === 'en' ? [
+  const navigation = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Research & Publications", href: "/research" },
     { name: "Experience", href: "/experience" },
     { name: "Contact", href: "/contact" },
-  ] : [
-    { name: "خانه", href: "/fa" },
-    { name: "درباره من", href: "/fa/about" },
-    { name: "تحقیقات و انتشارات", href: "/fa/research" },
-    { name: "تجربیات", href: "/fa/experience" },
-    { name: "تماس", href: "/fa/contact" },
   ];
 
   return (
@@ -52,59 +21,45 @@ export default function Navbar({ language, setLanguage }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to={language === 'en' ? "/" : "/fa"} className="font-semibold text-lg text-petrol">
-              {language === 'en' ? "Elmira Mirzabeigi" : "المیرا میرزابیگی"}
+            <Link to="/" className="font-semibold text-lg text-petrol dark:text-accent">
+              Elmira Mirzabeigi
             </Link>
           </div>
           
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-4 rtl:space-x-reverse">
+          <div className="hidden md:flex items-center space-x-4">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-gray-700 hover:text-petrol dark:text-gray-300 dark:hover:text-white px-3 py-2 text-sm font-medium story-link"
+                className="text-gray-700 hover:text-petrol dark:text-gray-300 dark:hover:text-accent px-3 py-2 text-sm font-medium story-link"
               >
                 {item.name}
               </Link>
             ))}
             
             <button
-              onClick={toggleLanguage}
-              className="px-3 py-1 rounded-md bg-petrol text-white hover:bg-petrol-light"
-            >
-              {language === 'en' ? "فارسی" : "English"}
-            </button>
-            
-            <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="ml-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               aria-label="Toggle dark mode"
             >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+              {theme === "dark" ? <Sun size={20} className="text-accent" /> : <Moon size={20} />}
             </button>
           </div>
           
           {/* Mobile menu button */}
-          <div className="flex md:hidden items-center space-x-4 rtl:space-x-reverse">
+          <div className="flex md:hidden items-center space-x-4">
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               aria-label="Toggle dark mode"
             >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            
-            <button
-              onClick={toggleLanguage}
-              className="px-2 py-1 rounded-md bg-petrol text-white text-sm hover:bg-petrol-light"
-            >
-              {language === 'en' ? "فارسی" : "English"}
+              {theme === "dark" ? <Sun size={20} className="text-accent" /> : <Moon size={20} />}
             </button>
             
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Open main menu</span>
@@ -122,7 +77,7 @@ export default function Navbar({ language, setLanguage }: NavbarProps) {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-petrol dark:hover:text-white block px-3 py-2 text-base font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-petrol dark:hover:text-accent block px-3 py-2 text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}

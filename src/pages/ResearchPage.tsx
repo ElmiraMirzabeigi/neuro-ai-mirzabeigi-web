@@ -1,21 +1,10 @@
 
 import PublicationCard from "@/components/PublicationCard";
 import { Badge } from "@/components/ui/badge";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const ResearchPage = () => {
-  const [language, setLanguage] = useState<'en' | 'fa'>('en');
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
-  const location = useLocation();
-  
-  useEffect(() => {
-    if (location.pathname.startsWith('/fa')) {
-      setLanguage('fa');
-    } else {
-      setLanguage('en');
-    }
-  }, [location.pathname]);
 
   const publications = [
     {
@@ -42,9 +31,7 @@ const ResearchPage = () => {
     }
   ];
 
-  const filters = language === 'en' 
-    ? ["Alzheimer's", "Optimization", "PINNs", "Neuroimaging"] 
-    : ["آلزایمر", "بهینه‌سازی", "PINNs", "تصویربرداری عصبی"];
+  const filters = ["Alzheimer's", "Optimization", "PINNs", "Neuroimaging"];
 
   const filteredPublications = activeFilter 
     ? publications.filter(p => p.tags?.includes(activeFilter)) 
@@ -53,25 +40,25 @@ const ResearchPage = () => {
   return (
     <div className="py-12">
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold text-petrol dark:text-white mb-6">
-          {language === 'en' ? "Research & Publications" : "تحقیقات و انتشارات"}
+        <h1 className="text-3xl font-bold text-petrol dark:text-accent mb-6">
+          Research & Publications
         </h1>
         
         <div className="mb-6">
           <div className="flex flex-wrap gap-2 items-center">
             <span className="font-medium">
-              {language === 'en' ? "Filter by:" : "فیلتر بر اساس:"}
+              Filter by:
             </span>
             <Badge 
-              className={`cursor-pointer ${!activeFilter ? 'bg-petrol text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'}`}
+              className={`cursor-pointer ${!activeFilter ? 'bg-petrol dark:bg-accent dark:text-gray-900 text-white' : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-300 text-gray-800'}`}
               onClick={() => setActiveFilter(null)}
             >
-              {language === 'en' ? "All" : "همه"}
+              All
             </Badge>
             {filters.map((filter) => (
               <Badge
                 key={filter}
-                className={`cursor-pointer ${activeFilter === filter ? 'bg-petrol text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'}`}
+                className={`cursor-pointer ${activeFilter === filter ? 'bg-petrol dark:bg-accent dark:text-gray-900 text-white' : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-300 text-gray-800'}`}
                 onClick={() => setActiveFilter(activeFilter === filter ? null : filter)}
               >
                 {filter}
@@ -89,7 +76,7 @@ const ResearchPage = () => {
               year={publication.year}
               abstract={publication.abstract}
               status={publication.status}
-              language={language}
+              language="en"
             />
           ))}
         </div>

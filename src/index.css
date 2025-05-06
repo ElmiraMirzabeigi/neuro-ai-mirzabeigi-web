@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -42,34 +42,30 @@
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 11%;
+    --card: 223 47% 13%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 195 65% 50%;
     --primary-foreground: 222 47% 11%;
 
     --secondary: 217 33% 18%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
+    --muted-foreground: 215 20% 70%;
 
-    --accent: 217 33% 18%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 195 65% 50%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 63% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 213 27% 84%;
-  }
-
-  [dir="rtl"] {
-    text-align: right;
+    --border: 217 33% 20%;
+    --input: 217 33% 22%;
+    --ring: 195 65% 50%;
   }
 }
 
@@ -98,14 +94,5 @@
   }
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
-  }
-}
-
-@layer utilities {
-  .dir-ltr {
-    direction: ltr;
-  }
-  .dir-rtl {
-    direction: rtl;
   }
 }

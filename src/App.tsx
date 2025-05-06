@@ -30,13 +30,6 @@ const App = () => (
               <Route path="/experience" element={<ExperiencePage />} />
               <Route path="/contact" element={<ContactPage />} />
               
-              {/* Persian routes */}
-              <Route path="/fa" element={<Index />} />
-              <Route path="/fa/about" element={<AboutPage />} />
-              <Route path="/fa/research" element={<ResearchPage />} />
-              <Route path="/fa/experience" element={<ExperiencePage />} />
-              <Route path="/fa/contact" element={<ContactPage />} />
-              
               {/* 404 route */}
               <Route path="*" element={<NotFound />} />
             </Routes>

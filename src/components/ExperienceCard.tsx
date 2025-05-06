@@ -15,10 +15,10 @@ export default function ExperienceCard({
   description
 }: ExperienceCardProps) {
   return (
-    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 animate-fade-in hover-scale">
+    <Card className="shadow-md hover:shadow-lg transition-shadow duration-300 animate-fade-in hover-scale border-t-4 border-t-petrol dark:border-t-accent">
       <CardHeader>
         <CardTitle className="text-lg font-bold">{title}</CardTitle>
-        <CardDescription className="text-md font-medium text-petrol dark:text-blue-300">
+        <CardDescription className="text-md font-medium text-petrol dark:text-accent">
           {company}
         </CardDescription>
         <CardDescription className="text-sm font-medium text-gray-500 dark:text-gray-400">
