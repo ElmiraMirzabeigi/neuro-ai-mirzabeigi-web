@@ -78,36 +78,43 @@ const ContactPage = () => {
             <h2 className="text-xl font-semibold mb-4">
               Send a Message
             </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              action="https://formspree.io/f/xvgajenw"
+              method="POST"
+              className="space-y-4"
+            >
               <div>
                 <label className="block text-sm font-medium mb-1">
                   Name
                 </label>
-                <Input required />
+                <Input required name="name" />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-1">
                   Email
                 </label>
-                <Input type="email" required />
+                <Input type="email" required name="email" />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-1">
                   Subject
                 </label>
-                <Input required />
+                <Input required name="subject" />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-1">
                   Message
                 </label>
-                <Textarea required rows={5} />
+                <Textarea required rows={5} name="message" />
               </div>
-              
-              <Button type="submit" className="w-full bg-petrol hover:bg-petrol-light dark:bg-accent dark:text-gray-900 dark:hover:bg-accent/80">
+
+              <Button
+                type="submit"
+                className="w-full bg-petrol hover:bg-petrol-light dark:bg-accent dark:text-gray-900 dark:hover:bg-accent/80"
+              >
                 Send Message
               </Button>
             </form>
