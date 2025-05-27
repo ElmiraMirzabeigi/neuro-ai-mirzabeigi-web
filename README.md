@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/131778ba-fe13-4300-ab00-a3994804a29d
+**URL**: [ElmiraMirzabeigi.com](https://www.elmiramirzabeigi.com/)
 
 ## How can I edit this code?
 
@@ -24,10 +24,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone ElmiraMirzabeigi
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd mirzabeigi-web
 
 # Step 3: Install the necessary dependencies.
 npm i
